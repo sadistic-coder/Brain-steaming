@@ -13,11 +13,13 @@ namespace ConsoleApp6
             int width = GetIntegerFromConsole("width");
             int height = GetIntegerFromConsole("height");
 
-            Square printObject = new Square(width, height);
+            Square figureObject = new Square(width, height);
 
-            if (CheckAvailableSquare(printObject.GetShape()))
+            Tuple<int, int> shape = figureObject.GetShape();
+
+            if (CheckAvailableSquare(shape))
             {
-                PrintSquare(printObject.GetShape());
+                PrintSquare(shape);
             }
         }
         static bool CheckAvailableSquare(Tuple<int, int> shape)

@@ -15,16 +15,11 @@ namespace ConsoleApp6
 
             Square figureObject = new Square(width, height);
 
-            Tuple<int, int> shape = figureObject.GetShape();
-
-            if (CheckAvailableSquare(shape))
+            if (figureObject.IsPrintable())
             {
+                Tuple<int, int> shape = figureObject.GetShape();
                 PrintSquare(shape);
             }
-        }
-        static bool CheckAvailableSquare(Tuple<int, int> shape)
-        {
-            return !(shape.Item1 <= 0 || shape.Item2 <= 0);
         }
         static int GetIntegerFromConsole()
         {
@@ -73,6 +68,10 @@ namespace ConsoleApp6
         {
             return Tuple.Create(this.width, this.heigth);
         }
+        public bool IsPrintable()
+        {
+            return !(width <= 0 || heigth <= 0);
+        }
     }
     class Triangle : IPrintable
     {
@@ -87,9 +86,13 @@ namespace ConsoleApp6
         {
             return Tuple.Create(this.width, this.heigth);
         }
+        public bool IsPrintable() {
+            return !(width <= 0 || heigth <= 0);
+        }
     }
     interface IPrintable
     {
         Tuple<int, int> GetShape();
+        bool IsPrintable();
     }
 }

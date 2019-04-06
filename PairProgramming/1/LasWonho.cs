@@ -60,10 +60,10 @@ namespace ConsoleApp6
             }
         }
     }
-    class Square
+    class Square : IPrintable
     {
-        private int width = 0;
-        private int heigth = 0;
+        private readonly int width;
+        private readonly int heigth;
         public Square(int width, int heigth)
         {
             this.width = width;
@@ -74,10 +74,10 @@ namespace ConsoleApp6
             return Tuple.Create(this.width, this.heigth);
         }
     }
-    class Triangle
+    class Triangle : IPrintable
     {
-        private int width = 0;
-        private int heigth = 0;
+        private readonly int width;
+        private readonly int heigth;
         public Triangle(int width, int heigth)
         {
             this.width = width;
@@ -87,5 +87,9 @@ namespace ConsoleApp6
         {
             return Tuple.Create(this.width, this.heigth);
         }
+    }
+    interface IPrintable
+    {
+        Tuple<int, int> GetShape();
     }
 }

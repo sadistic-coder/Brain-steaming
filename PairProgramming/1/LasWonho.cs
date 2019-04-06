@@ -10,11 +10,8 @@ namespace ConsoleApp6
     {
         static void Main(string[] args)
         {
-            Console.Write("가로값을 입력해주세요");
-            int width = GetIntegerFromConsole();
-
-            Console.Write("세로값을 입력해주세요");
-            int height = GetIntegerFromConsole();
+            int width = GetIntegerFromConsole("width");
+            int height = GetIntegerFromConsole("height");
 
             if (CheckAvailableSquare(height, width))
             {
@@ -27,6 +24,12 @@ namespace ConsoleApp6
         }
         static int GetIntegerFromConsole()
         {
+            Console.Write("값을 입력해주세요");
+            return int.Parse(Console.ReadLine());
+        }
+        static int GetIntegerFromConsole(string message)
+        {
+            Console.Write($"{message}값을 입력해주세요");
             return int.Parse(Console.ReadLine());
         }
         static void PrintStar(int number)

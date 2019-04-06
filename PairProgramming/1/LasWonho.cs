@@ -51,12 +51,34 @@ namespace ConsoleApp6
                 Console.WriteLine();
             }
         }
+        static void PrintTriangle(Tuple<int, int> shape)
+        {
+            for (int j = 0; j < shape.Item2; j++)
+            {
+                PrintStar(shape.Item1 - j);
+                Console.WriteLine();
+            }
+        }
     }
     class Square
     {
         private int width = 0;
         private int heigth = 0;
         public Square(int width, int heigth)
+        {
+            this.width = width;
+            this.heigth = heigth;
+        }
+        public Tuple<int, int> GetShape()
+        {
+            return Tuple.Create(this.width, this.heigth);
+        }
+    }
+    class Triangle
+    {
+        private int width = 0;
+        private int heigth = 0;
+        public Triangle(int width, int heigth)
         {
             this.width = width;
             this.heigth = heigth;

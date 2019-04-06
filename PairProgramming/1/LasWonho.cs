@@ -13,14 +13,16 @@ namespace ConsoleApp6
             int width = GetIntegerFromConsole("width");
             int height = GetIntegerFromConsole("height");
 
-            if (CheckAvailableSquare(height, width))
+            Square printObject = new Square(width, height);
+
+            if (CheckAvailableSquare(printObject.GetShape()))
             {
-                PrintSquare(height, width);
+                PrintSquare(printObject.GetShape());
             }
         }
-        static bool CheckAvailableSquare(int heigth, int width)
+        static bool CheckAvailableSquare(Tuple<int, int> shape)
         {
-            return !(heigth <= 0 || width <= 0);
+            return !(shape.Item1 <= 0 || shape.Item2 <= 0);
         }
         static int GetIntegerFromConsole()
         {
@@ -39,13 +41,27 @@ namespace ConsoleApp6
                 Console.Write('*');
             }
         }
-        static void PrintSquare(int height, int width)
+        static void PrintSquare(Tuple<int, int> shape)
         {
-            for (int j = 0; j < height; j++)
+            for (int j = 0; j < shape.Item2; j++)
             {
-                PrintStar(width);
+                PrintStar(shape.Item1);
                 Console.WriteLine();
             }
+        }
+    }
+    class Square
+    {
+        private int width = 0;
+        private int heigth = 0;
+        public Square(int width, int heigth)
+        {
+            this.width = width;
+            this.heigth = heigth;
+        }
+        public Tuple<int, int> GetShape()
+        {
+            return Tuple.Create(this.width, this.heigth);
         }
     }
 }
